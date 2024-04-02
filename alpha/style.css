@@ -1,0 +1,56 @@
+
+        *, *::before, *::after {
+  box-sizing: border-box;
+}
+
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100vw;
+    margin:0;
+    padding:0;
+  }
+  .top, #map, .bottom {
+    width: 100vw; /* Each section takes full width */
+  }
+
+  .top {
+    background-color: #fff;
+    height: 35px; /* Fixed height */
+    font-size: 25px;
+    text-align: center;
+    color: 000;
+  }
+
+  #map {
+    background-color: #fff;
+    flex: 1; /* Expand to fill the available space */
+  }
+
+  .bottom {
+    background-color: #fff;
+    height: 18px; /* Fixed height */
+    font-size: 12px;
+    text-align: center;
+  }
+
+.scrollable-popup .leaflet-popup-content {
+        max-height: 70vh; /* Initial default value, will be adjusted dynamically */
+        width: 50vw;
+        overflow-y: auto;
+    }
+
+.leaflet-popup-tip {
+    display: none;
+}
+
+.scrollable-popup h1 {
+    font-size: 20px;
+}
