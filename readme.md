@@ -116,21 +116,21 @@ Let's focus on the `config.js` file :
 
 `adminMode` : Allows to display all the points of the track in order to setup the special markers. To not use on production.
 
-`adminPoiColor` : Color of the POI in admin mode. Can be text or hexadecimal.
+`adminPoiColor` : Color of the POI in admin mode. Can be `text` or `hexadecimal`.
 
 `adminPoiRadius` : Size of the POI for admin mode.
 
-`lineColor` : Color of the GPX track on the map. Can be text or hexadecimal.
+`lineColor` : Color of the GPX track on the map. Can be `text` or `hexadecimal`.
 
 `lineWeight` : Weight of the GPX track on the map.
 
-`poiColor` : Color of the special markers. Can be text or hexadecimal.
+`poiColor` : Color of the special markers. Can be `text` or `hexadecimal`.
 
 `poiRadius` : Size of the POI on the map.
 
-`poiStartColor` : Specific color for the first POI. Can be text or hexadecimal.
+`poiStartColor` : Specific color for the first POI. Can be `text` or `hexadecimal`.
 
-`poiStopColor` : Specific color for the last POI. Can be text or hexadecimal.
+`poiStopColor` : Specific color for the last POI. Can be `text` or `hexadecimal`.
 
 `poiStartStopRadius` : Size for the start and stop POI.
 
@@ -138,5 +138,8 @@ Let's focus on the `config.js` file :
 
 
 **Additional ressources :**
+
 https://leaflet-extras.github.io/leaflet-providers/preview/
+
+
 https://htmlcolorcodes.com/color-names/ 

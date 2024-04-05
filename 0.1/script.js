@@ -5,8 +5,22 @@
 document.addEventListener("DOMContentLoaded", function() {
   
   // Show the title
-  document.getElementById('title').innerHTML = config.title;
+  //document.getElementById('title').innerHTML = config.title;
   
+  // Specify your HTML content
+  var htmlTitle = `
+    <div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: white; padding: 20px; border-radius: 5px; display: none;">
+      Loading GPX file...
+    </div>
+    <div class="top" id="title">${config.title}</div>
+    `;
+  var htmlFooter = `
+    <div class="bottom"><a href="https://myepicmap.com" target="_blank">Awesome map creator on MyEpicMap.com</a></div>
+    `;
+  // Insert the HTML before and after the target element
+  document.getElementById('map').insertAdjacentHTML('beforebegin', htmlTitle);
+  document.getElementById('map').insertAdjacentHTML('afterend', htmlFooter);
+
   //Initial zoom of the map
   var map = L.map('map', {
       center: [46.8, 2.46],
@@ -17,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   
+
 
 
   var tileServer = '';
@@ -217,9 +232,54 @@ document.addEventListener("DOMContentLoaded", function() {
       easeLinearity: 0.1,
       padding: [10, 10] // Top and left padding
     });
+
+    // Update the location immediately when the page loads
+    if(config.locationEnable){ updateLocation();}
+
   }));
 
   gpxLayer.addTo(map);
+
+
+  
+
+
+  var locationMarker;
+  let browserLocation = true;
+
+  // Function to update the device's location
+  function updateLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        // If there's an existing marker, remove it
+        if (locationMarker) {
+            map.removeLayer(locationMarker);
+        }
+
+        // Add a new marker to the map at the current position
+        locationMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map)
+            .bindPopup('You are here!');
+            //.openPopup();
+
+        // Optionally, center the map on the current position
+        if(config.locationCenter){ map.setView([position.coords.latitude, position.coords.longitude], 13);}
+
+      }, function(error) {
+        console.error('Geolocation error:', error);
+        browserLocation = false;
+      });
+    } else {
+      alert('Geolocation is not supported by your browser');
+      browserLocation = false;
+    }
+  }
+
+  
+
+  // Then update the location every 30 seconds
+  if(config.locationLive && browserLocation){setInterval(updateLocation, config.locationRefresh);}  // 30000 milliseconds = 30 seconds
+
+  
 
   // Listen for the 'popupclose' event on the map to zoom out
   map.on('popupclose', function() {

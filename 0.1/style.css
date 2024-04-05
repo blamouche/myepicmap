@@ -1,0 +1,65 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  margin:0;
+  padding:0;
+}
+.top, #map, .bottom {
+  width: 100vw;
+}
+
+.top {
+  background-color: DarkSlateGray;
+  height: 1.1em;
+  font-size: 25px;
+  text-align: center;
+  color: #fff;
+}
+
+#map {
+  background-color: #fff;
+  flex: 1;
+}
+
+.bottom {
+  background-color: DarkSlateGray;
+  height: 18px; /* Fixed height */
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+}
+.bottom a{
+  color: #fff;
+}
+
+.scrollable-popup .leaflet-popup-content {
+  max-height: 70vh;
+  width: 50vw;
+  overflow-y: auto;
+}
+
+.leaflet-popup-tip {
+  display: none;
+}
+
+.scrollable-popup h1 {
+  font-size: 2em;
+}
+.scrollable-popup p {
+  font-size: 1.4em;
+}
