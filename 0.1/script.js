@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 minWidth: popupWidth,
                 minHeight: popupHeight
               })
-              .setLatLng(latlng)
+              .setLatLng(latLng)
               .setContent(markerInfo.content)
               .openOn(map);
                     
